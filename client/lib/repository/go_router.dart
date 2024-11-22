@@ -1,17 +1,31 @@
-
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../pages/splashScreen.dart';
-import '../pages/LoginPage.dart';
-final routercon = GoRouter(
-  initialLocation: "/login",
+import 'package:client/pages/splashScreen.dart';
+import 'package:client/pages/LoginPage.dart';
+import 'package:client/pages/NoInternet.dart';
+import 'package:client/blocs/wifi/bloc/wifi_bloc.dart';
+import 'package:client/blocs/wifi/bloc/wifi_state.dart';
+
+final GoRouter routercon = GoRouter(
+  initialLocation: "/",
   routes: [
     GoRoute(
       path: '/',
-      builder: ( context,  state) =>const SplashScreen(), 
+      name: '/splash',
+      builder: (context, state) => SplashScreen(),
     ),
-     GoRoute(
+    GoRoute(
       path: '/login',
-      builder: ( context,  state) => LoginPage(), 
+      name: '/login',
+      builder: (context, state) => LoginPage(),
+    ),
+    GoRoute(
+      path: '/nointernet',
+      name: '/nointernet',
+      builder: (context, state) => NoInternetPage(),
     ),
   ],
+
 );
+

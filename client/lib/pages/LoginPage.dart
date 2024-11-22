@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -6,7 +7,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
+      appBar: AppBar(title: const Text('Login Page')), // Optional app bar
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -37,8 +38,8 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Add login functionality here
-                // For example, use context.go("/home") after successful login
+                // Use GoRouter for navigation
+                GoRouter.of(context).goNamed('/nointernet');
                 print('Login Button Pressed');
               },
               child: const Text('Login'),

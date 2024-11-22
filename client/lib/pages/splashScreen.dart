@@ -7,14 +7,14 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: Lottie.asset(
-          "assets/icons/loading.json",
-          repeat: true,
-          width: screenWidth,
-          height: 200,
+          'assets/icons/loading.json', // Path to your Lottie animation
+          width: screenWidth * 0.6, // Adjust width as needed
+          height: 250, // Adjust height
+          fit: BoxFit.cover,
         ),
       ),
     );
