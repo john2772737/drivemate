@@ -1,0 +1,23 @@
+/* Loading container that centers everything */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f0f0f0; /* Light background color */
+}
+
+/* Style the Lottie animation */
+.loading-container .lottie-container {
+  margin-bottom: 20px; /* Space between the loader and text */
+}
+
+/* Loading text styling */
+.loading-container p {
+  font-size: 18px;
+  color: #4645F6; /* Color for the loading text */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 10px; /* Space between animation and text */
+}
