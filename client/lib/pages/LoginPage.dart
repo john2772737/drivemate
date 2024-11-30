@@ -44,6 +44,15 @@ class LoginPage extends StatelessWidget {
               },
               child: const Text('Login'),
             ),
+            const SizedBox(height: 20),
+            // Google Sign-In Button with Icon
+            ElevatedButton.icon(
+              onPressed: () {
+                // You can add the functionality later
+              },
+              icon: const Icon(Icons.login), // Icon for Google Sign-In
+              label: const Text('Sign in with Google'),
+            ),
           ],
         ),
       ),
