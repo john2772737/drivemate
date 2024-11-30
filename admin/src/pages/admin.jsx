@@ -20,7 +20,7 @@ function Admin() {
     if (username === 'admin' && password === 'admin') {
       toast.success('Login successful!', { position: 'top-right' })
       login() // Assuming login is a function from useAuth
-      navigate('/dashboard') // You can change '/dashboard' to whatever route you want
+      navigate('/dashboard/inventory') // You can change '/dashboard' to whatever route you want
     } else {
       toast.error('Invalid username or password', { position: 'top-right' })
     }
