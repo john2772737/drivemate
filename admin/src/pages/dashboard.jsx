@@ -1,3 +1,4 @@
+
 import React from "react";
 import Sidebar from "../component/sidebar"; // Adjust the path if necessary.
 import TableContent from "../component/table_content"; // Adjust the path if necessary.
@@ -224,5 +225,7 @@ const Dashboard = () => {
     </div>
   );
 };
+
+
 
 export default Dashboard;
