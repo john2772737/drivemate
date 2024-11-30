@@ -1,16 +1,15 @@
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
-import { useAuth } from './context/authContext'; // Import the custom hook
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './context/authContext';
 
-const ProtectedRoute = ({ element, ...rest }) => {
+function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
 
-  return (
-    <Route
-      {...rest}
-      element={isAuthenticated ? element : <Navigate to="/login" />}
-    />
-  );
-};
+  if (!isAuthenticated) {
+    return <Navigate to="/main" />;
+  }
+
+  return children;
+}
 
 export default ProtectedRoute;
