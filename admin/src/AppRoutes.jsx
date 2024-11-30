@@ -20,7 +20,7 @@ function AppRoutes() {
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
         <Route path="inventory" element={<Inventory />} />
         <Route path="booking" element={<Booking />} />
-        <Route path="track" element={<Track />} />
+        <Route path="tracking" element={<Track />} />
       </Route>
 
     </Routes>

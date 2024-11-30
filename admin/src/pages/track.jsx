@@ -1,12 +1,11 @@
 
 import React from "react";
-import Sidebar from "../component/sidebar"; // Adjust the path if necessary.
 
 const Track = () => {
   return (
     <div className="flex min-h-screen bg-gray-100 dark:bg-gray-700">
       {/* Sidebar */}
-      <Sidebar />
+   
 
       {/* Main content */}
       <div className="flex-1 ml-14 md:ml-64 transition-all duration-300">
