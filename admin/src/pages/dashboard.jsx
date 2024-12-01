@@ -1,24 +1,46 @@
-import React from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import logo from "../assets/images/logo_png.png"; 
 
-const Dashboard = () => {
-  const navigate = useNavigate();
+function Dashboard() {
+  const [activeItem, setActiveItem] = useState(""); // State to track the active item
+  const location = useLocation(); // Get current location
+
+  // Update activeItem based on the current route
+  React.useEffect(() => {
+    setActiveItem(location.pathname.split("/")[2] || "");
+  }, [location]);
 
   return (
-    <div className="bg-custom-gray rounded-b-lg shadow-md overflow-auto max-h-screen">
-      {/* Sidebar Code */}
-      <div className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-custom-gray h-full text-white transition-all duration-300 z-10">
+    <div className="min-h-screen flex bg-custom-gray">
+      <aside className="fixed flex flex-col top-0 left-0 w-14 hover:w-64 md:w-64 bg-custom-gray dark:bg-custom-gray h-full text-white transition-all duration-300 border-none z-10 sidebar">
+        <div className="flex flex-row items-center py-2 px-4">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-3 mt-2"
+          />
+          <span className="text-sm sm:text-lg font-semibold text-white truncate">Admin</span> 
+        </div>
+
         <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
-          <ul className="flex flex-col py-4 space-y-1">
-            <li className="px-5 hidden md:block">
+          <ul className="flex flex-col py-1 space-y-1">
+            <li className="px-8 hidden md:block">
               <div className="flex flex-row items-center h-8">
                 <div className="text-sm font-light tracking-wide text-gray-400 uppercase">Auctions</div>
               </div>
             </li>
             <li>
-              <div
-                onClick={() => navigate("/dashboard")}
-                className="relative flex flex-row items-center h-11 focus:outline-none cursor-pointer hover:bg-blue-800 text-white-600 hover:text-white-800 border-transparent border-l-4 pr-6"
+              <Link
+                to="inventory"
+                className={`relative flex flex-row items-center h-11 focus:outline-none ${
+                  activeItem === "inventory"
+                    ? "bg-blue-800 text-white"
+                    : "hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white"
+                } border-l-4 ${
+                  activeItem === "inventory" ? "border-blue-500" : "border-transparent"
+                } pr-6 transition-all duration-300`}
+                onClick={() => setActiveItem("inventory")}
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -28,69 +50,23 @@ const Dashboard = () => {
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="ml-2 text-sm tracking-wide truncate">Dashboard</span>
-              </div>
-            </li>
-            <li>
-              <div
-                onClick={() => navigate("/dashboard/booking")}
-                className="relative flex flex-row items-center h-11 focus:outline-none cursor-pointer hover:bg-blue-800 text-white-600 hover:text-white-800 border-transparent border-l-4 pr-6"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                    ></path>
-                  </svg>
-                </span>
-                <span className="ml-2 text-sm tracking-wide truncate">Booking</span>
-              </div>
-            </li>
-            <li>
-              <div
-                onClick={() => navigate("/dashboard/inventory")}
-                className="relative flex flex-row items-center h-11 focus:outline-none cursor-pointer hover:bg-blue-800 text-white-600 hover:text-white-800 border-transparent border-l-4 pr-6"
-              >
-                <span className="inline-flex justify-center items-center ml-4">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12l2 2l4-4m-6 8a9 9 0 110-18 9 9 0 010 18z"
-                    ></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h10" />
                   </svg>
                 </span>
                 <span className="ml-2 text-sm tracking-wide truncate">Inventory</span>
-              </div>
+              </Link>
             </li>
             <li>
-              <div
-                onClick={() => navigate("/dashboard/tracking")}
-                className="relative flex flex-row items-center h-11 focus:outline-none cursor-pointer hover:bg-blue-800 text-white-600 hover:text-white-800 border-transparent border-l-4 pr-6"
+              <Link
+                to="booking"
+                className={`relative flex flex-row items-center h-11 focus:outline-none ${
+                  activeItem === "booking"
+                    ? "bg-blue-800 text-white"
+                    : "hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white"
+                } border-l-4 ${
+                  activeItem === "booking" ? "border-blue-500" : "border-transparent"
+                } pr-6 transition-all duration-300`}
+                onClick={() => setActiveItem("booking")}
               >
                 <span className="inline-flex justify-center items-center ml-4">
                   <svg
@@ -100,30 +76,48 @@ const Dashboard = () => {
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 10h11M9 21l3-3m0-3H9m12-3v8m-6 4v-8"
-                    ></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3M5 11h14M17 16h-6m6 0a2 2 0 002-2h-6a2 2 0 01-2 2m2 0h6" />
                   </svg>
                 </span>
-                <span className="ml-2 text-sm tracking-wide truncate">Tracking</span>
-              </div>
+                <span className="ml-2 text-sm tracking-wide truncate">Booking</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="track"
+                className={`relative flex flex-row items-center h-11 focus:outline-none ${
+                  activeItem === "track"
+                    ? "bg-blue-800 text-white"
+                    : "hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white"
+                } border-l-4 ${
+                  activeItem === "track" ? "border-blue-500" : "border-transparent"
+                } pr-6 transition-all duration-300`}
+                onClick={() => setActiveItem("track")}
+              >
+                <span className="inline-flex justify-center items-center ml-4">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A2 2 0 013 15.382V8.618a2 2 0 01.553-1.382L9 4m0 16l5.447-2.724A2 2 0 0021 15.382V8.618a2 2 0 00-.553-1.382L9 4m0 16v-4m0-8V4" />
+                  </svg>
+                </span>
+                <span className="ml-2 text-sm tracking-wide truncate">Track</span>
+              </Link>
             </li>
           </ul>
         </div>
-      </div>
+      </aside>
 
       {/* Main content area */}
-      <div className="flex-1 ml-14 md:ml-64 transition-all duration-300">
-        <main className="p-4">
-          {/* Outlet for rendering child routes */}
-          <Outlet />
-        </main>
-      </div>
+      <main className="ml-5 flex-1">
+        <Outlet />
+      </main>
     </div>
   );
-};
+}
 
 export default Dashboard;
