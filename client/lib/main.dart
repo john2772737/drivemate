@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp.router(
             routerConfig: (state is Connected) ? routercon : nointernet, // Ensure routercon is defined elsewhere in your code
+            debugShowCheckedModeBanner: false,
           );
         },
       ),
