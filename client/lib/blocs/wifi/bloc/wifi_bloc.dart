@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'wifi_event.dart';
 import 'wifi_state.dart';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 class WifiBloc extends Bloc<WifiEvent, WifiState> {

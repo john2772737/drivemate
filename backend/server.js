@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const CarRoute = require('./route/cars.route')
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
+app.use(cors());
 app.use("/cars", CarRoute);
 
 
