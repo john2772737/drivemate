@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../repository/auth.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -7,9 +8,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    final AuthService _authService = AuthService();
     return Scaffold(
-      // appBar: AppBar(title: const Text('Login Page')), 
+      // appBar: AppBar(title: const Text('Login Page')),
       body: Padding(
         padding: const EdgeInsets.all(0),
         child: Column(
@@ -32,7 +33,7 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Transform.translate(
-              offset: Offset(screenWidth*0.02, 0),
+              offset: Offset(screenWidth * 0.02, 0),
               child: Image.asset(
                 'assets/images/dodge_signin.png',
                 height: 250,
@@ -45,26 +46,24 @@ class LoginPage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFF282931),
-                    borderRadius: BorderRadius.circular(20)
-                  ),
+                      color: Color(0xFF282931),
+                      borderRadius: BorderRadius.circular(20)),
                   height: 370,
                   width: 300,
                   child: Column(
                     children: [
-                      // Step unto the gas 
+                      // Step unto the gas
                       Center(
-                        child: Container(
-                          margin: EdgeInsets.only(top: 15.0),
-                          child: Text(
-                            'Step unto the gas!',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
+                          child: Container(
+                        margin: EdgeInsets.only(top: 15.0),
+                        child: Text(
+                          'Step unto the gas!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
                           ),
-                        )
-                      ),
+                        ),
+                      )),
                       // Text Field
                       Center(
                         child: Column(
@@ -76,12 +75,11 @@ class LoginPage extends StatelessWidget {
                                 height: 50,
                                 child: TextField(
                                   decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Color(0xFFF4F6FF),
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Username',
-                                    hintStyle: TextStyle(fontSize: 12)
-                                  ),
+                                      filled: true,
+                                      fillColor: Color(0xFFF4F6FF),
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Username',
+                                      hintStyle: TextStyle(fontSize: 12)),
                                 ),
                               ),
                             ),
@@ -90,13 +88,12 @@ class LoginPage extends StatelessWidget {
                               height: 50,
                               child: TextField(
                                 decoration: InputDecoration(
-                                  hintText: 'Password',
-                                  alignLabelWithHint: true,
-                                  filled: true,
-                                  fillColor: Color(0xFFF4F6FF),
-                                  border: OutlineInputBorder(),
-                                  hintStyle: TextStyle(fontSize: 12)
-                                ),
+                                    hintText: 'Password',
+                                    alignLabelWithHint: true,
+                                    filled: true,
+                                    fillColor: Color(0xFFF4F6FF),
+                                    border: OutlineInputBorder(),
+                                    hintStyle: TextStyle(fontSize: 12)),
                               ),
                             ),
                           ],
@@ -105,15 +102,12 @@ class LoginPage extends StatelessWidget {
                       Transform.translate(
                         offset: Offset(75, -10),
                         child: TextButton(
-                          onPressed: (){}, 
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white
-                            ),
-                          )
-                        ),
+                            onPressed: () {},
+                            child: Text(
+                              'Forgot Password?',
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.white),
+                            )),
                       ),
                       Transform.translate(
                         offset: Offset(0, -20),
@@ -124,32 +118,32 @@ class LoginPage extends StatelessWidget {
                               child: SizedBox(
                                 width: 130,
                                 child: ElevatedButton(
-                                  onPressed: () {}, 
+                                  onPressed: () {},
                                   child: Text(
-                                    "Explore!", 
-                                    style: TextStyle(
-                                      color: Colors.white
-                                    ),
+                                    "Explore!",
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                   style: ButtonStyle(
-                                    backgroundColor: WidgetStateProperty.all(Color(0xFF000000)), 
+                                    backgroundColor: WidgetStateProperty.all(
+                                        Color(0xFF000000)),
                                   ),
                                 ),
                               ),
                             ),
-                            SizedBox(width: 10), // Add space between the buttons
+                            SizedBox(
+                                width: 10), // Add space between the buttons
                             ElevatedButton(
-                              onPressed: () {}, 
+                              onPressed: () {},
                               child: Row(
                                 children: [
                                   Text(
                                     "Let's Go!",
-                                    style: TextStyle(
-                                      color: Colors.black
-                                    ),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(left: 10), // Space between text and image
+                                    padding: EdgeInsets.only(
+                                        left:
+                                            10), // Space between text and image
                                     child: Image.asset(
                                       'assets/images/customized_arrow.png',
                                     ),
@@ -165,7 +159,7 @@ class LoginPage extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(left: 18, right: 5),
                             child: SizedBox(
-                              width: screenWidth*0.2,
+                              width: screenWidth * 0.2,
                               child: Divider(
                                 color: Colors.white,
                               ),
@@ -173,17 +167,15 @@ class LoginPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.all(5),
-                              child: Text(
+                            child: Text(
                               "or continue with",
-                              style: TextStyle(
-                                color: Colors.white
-                              ),
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 5),
                             child: SizedBox(
-                              width: screenWidth*0.2,
+                              width: screenWidth * 0.2,
                               child: Divider(
                                 color: Colors.white,
                               ),
@@ -192,22 +184,30 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: SizedBox(
-                          width: 65,
-                          height: 65,
-                          child: ElevatedButton(
-                            onPressed: (){}, 
-                            child: Image.asset(
-                              'assets/images/google_icon.png',
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(Color(0xFF282931)),
-                              elevation: WidgetStateProperty.all(0),
-                              padding: WidgetStateProperty.all(EdgeInsets.zero)
-                            ),
+                          child: SizedBox(
+                        width: 65,
+                        height: 65,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            final user = await _authService.signInWithGoogle();
+                            if (user != null) {
+                              print("Signed in as: ${user.displayName}");
+                              // Navigate to home screen or update UI
+                            } else {
+                              print("Google Sign-In failed.");
+                            }
+                          },
+                          child: Image.asset(
+                            'assets/images/google_icon.png',
                           ),
-                        )
-                      )
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStateProperty.all(Color(0xFF282931)),
+                              elevation: WidgetStateProperty.all(0),
+                              padding:
+                                  WidgetStateProperty.all(EdgeInsets.zero)),
+                        ),
+                      ))
                     ],
                   ),
                 ),
