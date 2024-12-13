@@ -4,7 +4,7 @@ import 'package:client/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:client/repository/go_router.dart'; // Ensure GoRouter config is imported correctly
+import 'package:client/repository/go_router.dart'; 
 import './repository/no_internet.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<WifiBloc, WifiState>(
         builder: (context, state) {
           return MaterialApp.router(
-            routerConfig: (state is Connected) ? routercon : nointernet, // Ensure routercon is defined elsewhere in your code
+            routerConfig: (state is Connected) ? routercon : nointernet, 
             debugShowCheckedModeBanner: false,
           );
         },
