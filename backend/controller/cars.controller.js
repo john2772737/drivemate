@@ -47,9 +47,24 @@ const deleteCar = async (req, res) => {
     }
   };
 
+  const getSingleCar=  async (req, res) => {
+    try {
+      const { id } = req.params; 
+      const getSingleCar = await Cars.findById(id);
+  
+      if (!getSingleCar) {
+        return res.status(404).json({ message: 'Car not found' });
+      }
+  
+      res.status(200).json(getSingleCar); 
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 
 
 
 
-module.exports ={createCar, getAllCars,deleteCar,updateCar };
+
+module.exports ={createCar, getAllCars,deleteCar,updateCar,getSingleCar };
