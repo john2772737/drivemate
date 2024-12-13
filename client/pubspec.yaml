@@ -39,6 +39,7 @@ flutter:
     - assets/images/dodge_signin.png
     - assets/images/customized_arrow.png
     - assets/images/google_icon.png
+    - assets/images/image.png
 
 flutter_launcher_icons:
   android: "launcher_icon"
