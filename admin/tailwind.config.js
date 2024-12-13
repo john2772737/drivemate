@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   theme: {
     extend: {
       colors: {
@@ -7,7 +7,7 @@ module.exports = {
     },
   },
   content: [
-    './src/**/*.{html,js,jsx,ts,tsx}',
+    './src/**/*.{html,js,jsx,ts,tsx}', // Add paths to your files
   ],
   plugins: [],
 };
