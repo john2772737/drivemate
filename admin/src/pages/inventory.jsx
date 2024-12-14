@@ -59,6 +59,7 @@ const Inventory = () => {
     "Price",
     "Seats",
     "Category",
+    "Availability",
     "Edit",
   ];
 
@@ -101,6 +102,7 @@ const Inventory = () => {
     `$${car.price.toLocaleString()}`, // Format price
     car.seats,
     car.category,
+    car.availabilityStatus
   ]);
 
   return (
