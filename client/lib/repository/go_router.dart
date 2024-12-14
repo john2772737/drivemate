@@ -6,18 +6,21 @@ import 'package:client/pages/LoginPage.dart';
 import 'package:client/pages/WelcomePage.dart';
 import 'package:client/pages/NoInternet.dart';
 import 'package:client/pages/HomePage.dart';
+import 'package:client/pages/All_cars.dart';
+import 'package:client/brand_pages/brand_cars_data.dart';
+import 'package:client/brand_pages/BrandCarsPage.dart';
 import 'package:client/blocs/wifi/bloc/wifi_bloc.dart';
 import 'package:client/blocs/wifi/bloc/wifi_state.dart';
 
 final GoRouter routercon = GoRouter(
-  initialLocation: "/login",
+  initialLocation: "/home",
   routes: [
     GoRoute(
       path: '/',
       name: '/splash',
       builder: (context, state) => SplashScreen(),
     ),
-            GoRoute(
+    GoRoute(
       path: '/welcomepage',
       name: '/welcomepage',
       builder: (context, state) => WelcomePage(),
@@ -33,11 +36,25 @@ final GoRouter routercon = GoRouter(
       builder: (context, state) => HomePage(),
     ),
     GoRoute(
+      path: '/allcars',
+      builder: (context, state) {
+        final brandName = state.extra as String;
+        return AllCarsPage(brandName: brandName);
+      },
+    ),
+    GoRoute(
+      path: '/brandCars',
+      builder: (context, state) {
+        final brandName = state.extra as String;
+        return BrandCarsPage(brandName: brandName);
+      },
+    ),
+    GoRoute(
       path: '/nointernet',
       name: '/nointernet',
       builder: (context, state) => NoInternetPage(),
     ),
   ],
-
 );
+
 

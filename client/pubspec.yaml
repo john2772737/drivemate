@@ -42,6 +42,24 @@ flutter:
     - assets/images/google_icon.png
     - assets/images/image.png
     - assets/images/WELCOME_PAGE.png
+    - assets/images/honda.png
+    - assets/images/civic.png
+    - assets/images/vios.png
+    - assets/images/sorento.png
+
+  fonts:
+    - family: goodtimes
+      fonts:
+        - asset: assets/fonts/good-times-Regular.otf
+
+    - family: nasalization
+      fonts:
+        - asset: assets/fonts/nasalization-rg.otf
+
+    - family: montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+
 
 flutter_launcher_icons:
   android: "launcher_icon"
