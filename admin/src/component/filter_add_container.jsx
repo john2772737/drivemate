@@ -17,11 +17,17 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
     fuel: 'Gasoline',
     transmission: 'Automatic',
     category: 'Economy',
-    image: '', // Image will be stored here
+    frontImage: '', // Front image
+    backImage: '',  // Back image
+    sideImage: '',  // Side image
   });
 
-  // State for storing the image file before uploading
-  const [imageFile, setImageFile] = useState(null);
+  // State for storing the image files before uploading
+  const [imageFiles, setImageFiles] = useState({
+    front: null,
+    back: null,
+    side: null,
+  });
 
   // Function to open the modal
   const openModal = () => {
@@ -44,52 +50,92 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
 
   // Handle image file selection
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file); // Store the file for later upload
+    const { name, files } = e.target;
+    if (files[0]) {
+      setImageFiles({
+        ...imageFiles,
+        [name]: files[0], // Store selected file
+      });
     }
   };
 
   // Handle image upload and form submission
   const handleAddCar = async () => {
     setIsLoading(true); // Start loading
-    let imageUrl = '';
+    let imageUrls = { front: '', back: '', side: '' };
 
-    // If there's an image file, upload it
-    if (imageFile) {
+    // If there's a front image, upload it
+    if (imageFiles.front) {
       const formData = new FormData();
-      formData.append('image', imageFile);
+      formData.append('image', imageFiles.front);
 
       try {
         const response = await axios.post(
           'https://api.imgbb.com/1/upload?key=4713a2e6319b66146b39ddedddde1bac', // Replace with your ImgBB API key
           formData
         );
-        
-        // Get the uploaded image URL
-        imageUrl = response.data.data.url;
-        
+        imageUrls.front = response.data.data.url;
       } catch (error) {
-        console.error('Error uploading image to ImgBB', error);
-        toast.error('Error uploading image!'); // Show error toast
+        console.error('Error uploading front image to ImgBB', error);
+        toast.error('Error uploading front image!'); // Show error toast
         setIsLoading(false); // Stop loading
         return;
       }
     }
 
-    // Add the image URL to the car data
-    const carWithImage = {
+    // If there's a back image, upload it
+    if (imageFiles.back) {
+      const formData = new FormData();
+      formData.append('image', imageFiles.back);
+
+      try {
+        const response = await axios.post(
+          'https://api.imgbb.com/1/upload?key=4713a2e6319b66146b39ddedddde1bac', // Replace with your ImgBB API key
+          formData
+        );
+        imageUrls.back = response.data.data.url;
+      } catch (error) {
+        console.error('Error uploading back image to ImgBB', error);
+        toast.error('Error uploading back image!'); // Show error toast
+        setIsLoading(false); // Stop loading
+        return;
+      }
+    }
+
+    // If there's a side image, upload it
+    if (imageFiles.side) {
+      const formData = new FormData();
+      formData.append('image', imageFiles.side);
+
+      try {
+        const response = await axios.post(
+          'https://api.imgbb.com/1/upload?key=4713a2e6319b66146b39ddedddde1bac', // Replace with your ImgBB API key
+          formData
+        );
+        imageUrls.side = response.data.data.url;
+      } catch (error) {
+        console.error('Error uploading side image to ImgBB', error);
+        toast.error('Error uploading side image!'); // Show error toast
+        setIsLoading(false); // Stop loading
+        return;
+      }
+    }
+
+    // Add the image URLs to the car data
+    const carWithImages = {
       ...carData,
-      image: imageUrl,
+      frontImage: imageUrls.front,
+      backImage: imageUrls.back,
+      sideImage: imageUrls.side,
     };
 
     try {
       // Send car data to the parent or backend
-      await onAddClick(carWithImage);// Show success toast
+      await onAddClick(carWithImages); // Show success toast
       setIsLoading(false); // Stop loading
     } catch (error) {
       console.error('Error adding car', error);
-     // Show error toast
+      toast.error('Error adding car!'); // Show error toast
       setIsLoading(false); // Stop loading
     }
 
@@ -104,10 +150,21 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
       fuel: 'Gasoline',
       transmission: 'Automatic',
       category: 'Economy',
-      image: '',
+      frontImage: '',
+      backImage: '',
+      sideImage: '',
     });
-    setImageFile(null); // Reset the image file state
+    setImageFiles({
+      front: null,
+      back: null,
+      side: null,
+    }); // Reset the image file state
     closeModal(); // Close the modal
+  };
+
+  // Helper function to render check mark if file is selected
+  const renderFileIcon = (imageFile) => {
+    return imageFile ? <span className="text-green-500">✔️</span> : null;
   };
 
   return (
@@ -221,14 +278,39 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
                 <option value="Convertible">Convertible</option>
                 <option value="Sport">Sport</option>
               </select>
-              {/* File input for image upload */}
-              <label htmlFor="image" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
-                Choose Car Image
+              {/* File inputs for image uploads */}
+              <label htmlFor="front" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
+                Choose Front Image
+                {renderFileIcon(imageFiles.front)} {/* Check mark */}
                 <input
                   type="file"
-                  id="image"
-                  name="image"
-                  onChange={handleImageChange} // Use the image change handler
+                  id="front"
+                  name="front"
+                  onChange={handleImageChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+              </label>
+              <label htmlFor="back" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
+                Choose Back Image
+                {renderFileIcon(imageFiles.back)} {/* Check mark */}
+                <input
+                  type="file"
+                  id="back"
+                  name="back"
+                  onChange={handleImageChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+              </label>
+              <label htmlFor="side" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
+                Choose Side Image
+                {renderFileIcon(imageFiles.side)} {/* Check mark */}
+                <input
+                  type="file"
+                  id="side"
+                  name="side"
+                  onChange={handleImageChange}
                   accept="image/*"
                   className="hidden"
                 />

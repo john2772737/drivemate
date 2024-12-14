@@ -25,9 +25,11 @@ const CarsSchema = new mongoose.Schema(
       required: true,
       min: 0
     },
-    isAvailable: {
-      type: Boolean,
-      default: true
+    availabilityStatus: {
+      type: String,
+      enum: ['Available', 'Pending', 'Not Available'],
+      default: 'Available',
+      required: true
     },
     mileage: {
       type: Number,
@@ -62,13 +64,22 @@ const CarsSchema = new mongoose.Schema(
       enum: ['Economy', 'Luxury', 'SUV', 'Convertible', 'Sport'],
       description: "The category of the car"
     },
-    image: {
+    frontImage: { // Changed name from image to frontImageView
       type: String, 
       required: false, 
-      description: "URL or path of the car image"
+      description: "URL or path of the front view of the car"
+    },
+    backImage: { // Added back view image
+      type: String, 
+      required: false, 
+      description: "URL or path of the back view of the car"
+    },
+    sideImage: { // Added side view image
+      type: String, 
+      required: false, 
+      description: "URL or path of the side view of the car"
     }
   },
-  
 );
 
 const Car = mongoose.model('Car', CarsSchema);

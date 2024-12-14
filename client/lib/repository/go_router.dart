@@ -10,7 +10,7 @@ import 'package:client/blocs/wifi/bloc/wifi_bloc.dart';
 import 'package:client/blocs/wifi/bloc/wifi_state.dart';
 
 final GoRouter routercon = GoRouter(
-  initialLocation: "/welcomepage",
+  initialLocation: "/login",
   routes: [
     GoRoute(
       path: '/',
