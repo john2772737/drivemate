@@ -77,7 +77,18 @@ const CarsSchema = new mongoose.Schema(
     sideImage: { // Added side view image
       type: String, 
       required: false, 
-      description: "URL or path of the side view of the car"
+      description: 
+      "URL or path of the side view of the car"
+    },
+    rentalStartDate: { 
+      type: Date, 
+      required: false, 
+      description: "Date when the car was rented" 
+    },
+    rentalEndDate: { 
+      type: Date, 
+      required: false, 
+      description: "Date when the car rental ends"
     }
   },
 );
