@@ -17,7 +17,7 @@ class BrandCarsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("$brandName Cars"),
       ),
-      body: Car_Card(cars: cars), // Use Car_Card component here
+      // Use Car_Card component here
     );
   }
 }

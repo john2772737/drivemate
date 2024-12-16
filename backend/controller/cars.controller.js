@@ -62,9 +62,17 @@ const deleteCar = async (req, res) => {
     }
   };
 
+  const getDistinctCarBrands = async (req, res) => {
+    try {
+        const brands = await Cars.distinct('make');
+        res.status(200).json(brands);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
 
 
 
 
 
-module.exports ={createCar, getAllCars,deleteCar,updateCar,getSingleCar };
+module.exports ={createCar, getAllCars,deleteCar,updateCar,getSingleCar, getDistinctCarBrands};

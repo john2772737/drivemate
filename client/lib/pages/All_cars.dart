@@ -45,7 +45,7 @@ class AllCarsPage extends StatelessWidget {
                       itemCount: randomCars.length,
                       itemBuilder: (context, index) {
                         // Pass each random car to Car_Card
-                        return Car_Card(cars: [randomCars[index]]);
+                       
                       },
                     ),
                   ),
