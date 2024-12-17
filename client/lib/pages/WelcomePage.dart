@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swipe_button/flutter_swipe_button.dart';
-
+import 'package:go_router/go_router.dart';
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
@@ -84,7 +84,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
                 onSwipe: () {
-                  showSnack(context, "Swiped!");
+                   GoRouter.of(context).go('/login');
                   
                 },
               ),

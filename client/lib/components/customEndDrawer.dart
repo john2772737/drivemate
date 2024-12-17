@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart'; // Import Fluttertoast
+import '../repository/auth.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomEndDrawer extends StatelessWidget {
   final bool isLoggedIn;
@@ -18,12 +21,12 @@ class CustomEndDrawer extends StatelessWidget {
       child: ListView(
         children: [
           SizedBox(
-            height: 120, 
+            height: 120,
             child: DrawerHeader(
               child: Center(
                 child: Row(
                   children: [
-                    //image
+                    // Image Placeholder
                     SizedBox(
                       height: 50,
                       child: Container(
@@ -42,10 +45,11 @@ class CustomEndDrawer extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ),
             ),
           ),
+          // Dynamic Menu Items
           ...menuItems.map((item) {
             return ListTile(
               leading: Icon(item['icon']),
@@ -53,11 +57,30 @@ class CustomEndDrawer extends StatelessWidget {
             );
           }).toList(),
 
+          // Logout Option (only if logged in)
           if (isLoggedIn)
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
-              onTap: () {},
+              onTap: () async {
+                final authService = AuthService(); // Initialize AuthService
+                await authService.signOut(); // Sign out the user
+
+                // Show a toast notification
+                Fluttertoast.showToast(
+                  msg: "Logged out successfully!",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.black,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+
+                // Navigate to Login Page
+                if (context.mounted) {
+                  GoRouter.of(context).go('/login');
+                }
+              },
             ),
         ],
       ),

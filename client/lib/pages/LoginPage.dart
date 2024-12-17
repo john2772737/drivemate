@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../repository/auth.dart';
 import 'package:fluttertoast/fluttertoast.dart'; // Import the toast package
+import '../repository/user_service.dart'; // Import your UserService
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,6 +11,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     final AuthService _authService = AuthService();
+    final UserService _userService = UserService(); // Initialize UserService
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -111,8 +113,7 @@ class LoginPage extends StatelessWidget {
                               ),
                               child: Row(
                                 children: [
-                                  const Text("Let's Go!",
-                                      style: TextStyle(color: Colors.black)),
+                                  const Text("Let's Go!"),
                                   const SizedBox(width: 10),
                                   Image.asset(
                                     'assets/images/customized_arrow.png',
@@ -129,20 +130,29 @@ class LoginPage extends StatelessWidget {
                           final user = await _authService.signInWithGoogle();
                           if (user != null) {
                             print("Signed in as: ${user.displayName}");
-                                  Fluttertoast.showToast(
-                              msg: "Google Sign-In Succesfully.",
-                              toastLength: Toast.LENGTH_LONG,  // Test with LONG
+
+                            var userData = {
+                              'email': user.email ?? '',
+                              'uid': user.uid ?? '',
+                            };
+
+                            // Save user data to MongoDB only if user doesn't already exist
+                            await _userService.saveUserToDatabase(userData);
+
+                            Fluttertoast.showToast(
+                              msg: "Google Sign-In Successful.",
+                              toastLength: Toast.LENGTH_LONG,
                               gravity: ToastGravity.BOTTOM,
                               backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 16.0,
                             );
-                            context.go('/home'); // Navigate to the home screen
+                            context.go('/home'); // Navigate to home screen
                           } else {
-                            // Show Toast message instead of SnackBar
+                            // Show Toast message for failed login
                             Fluttertoast.showToast(
                               msg: "Google Sign-In failed.",
-                              toastLength: Toast.LENGTH_LONG,  // Test with LONG
+                              toastLength: Toast.LENGTH_LONG,
                               gravity: ToastGravity.BOTTOM,
                               backgroundColor: Colors.red,
                               textColor: Colors.white,
@@ -154,8 +164,7 @@ class LoginPage extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               const Color(0xFF282931)),
                           elevation: MaterialStateProperty.all(0),
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.zero),
+                          padding: MaterialStateProperty.all(EdgeInsets.zero),
                         ),
                         child: Image.asset(
                           'assets/images/google_icon.png',
