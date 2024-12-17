@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -41,19 +40,9 @@ class AuthService {
     }
   }
 
-  // Example: Add email/password sign-in
-  Future<User?> signInWithEmail(String email, String password) async {
-    try {
-      final userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } catch (e) {
-      print("Error signing in with email: $e");
-      return null;
-    }
+  // Get email of the current user
+  String? getCurrentUserEmail() {
+    return _auth.currentUser?.email;
   }
-
-  
 }
+
