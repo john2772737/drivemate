@@ -20,6 +20,7 @@ Car _$CarFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Car {
+  String? get id => throw _privateConstructorUsedError; // Add the id field
   String get make => throw _privateConstructorUsedError;
   String get model => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
@@ -53,7 +54,8 @@ abstract class $CarCopyWith<$Res> {
       _$CarCopyWithImpl<$Res, Car>;
   @useResult
   $Res call(
-      {String make,
+      {String? id,
+      String make,
       String model,
       int year,
       String color,
@@ -86,6 +88,7 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? make = null,
     Object? model = null,
     Object? year = null,
@@ -105,6 +108,10 @@ class _$CarCopyWithImpl<$Res, $Val extends Car> implements $CarCopyWith<$Res> {
     Object? rentalEndDate = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       make: null == make
           ? _value.make
           : make // ignore: cast_nullable_to_non_nullable
@@ -184,7 +191,8 @@ abstract class _$$CarImplCopyWith<$Res> implements $CarCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String make,
+      {String? id,
+      String make,
       String model,
       int year,
       String color,
@@ -214,6 +222,7 @@ class __$$CarImplCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$CarImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? make = null,
     Object? model = null,
     Object? year = null,
@@ -233,6 +242,10 @@ class __$$CarImplCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$CarImpl>
     Object? rentalEndDate = freezed,
   }) {
     return _then(_$CarImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       make: null == make
           ? _value.make
           : make // ignore: cast_nullable_to_non_nullable
@@ -309,7 +322,8 @@ class __$$CarImplCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res, _$CarImpl>
 @JsonSerializable()
 class _$CarImpl implements _Car {
   const _$CarImpl(
-      {required this.make,
+      {this.id,
+      required this.make,
       required this.model,
       required this.year,
       required this.color,
@@ -330,6 +344,9 @@ class _$CarImpl implements _Car {
   factory _$CarImpl.fromJson(Map<String, dynamic> json) =>
       _$$CarImplFromJson(json);
 
+  @override
+  final String? id;
+// Add the id field
   @override
   final String make;
   @override
@@ -367,7 +384,7 @@ class _$CarImpl implements _Car {
 
   @override
   String toString() {
-    return 'Car(make: $make, model: $model, year: $year, color: $color, price: $price, availabilityStatus: $availabilityStatus, mileage: $mileage, seats: $seats, fuel: $fuel, fuelConsumption: $fuelConsumption, transmission: $transmission, category: $category, frontImage: $frontImage, backImage: $backImage, sideImage: $sideImage, rentalStartDate: $rentalStartDate, rentalEndDate: $rentalEndDate)';
+    return 'Car(id: $id, make: $make, model: $model, year: $year, color: $color, price: $price, availabilityStatus: $availabilityStatus, mileage: $mileage, seats: $seats, fuel: $fuel, fuelConsumption: $fuelConsumption, transmission: $transmission, category: $category, frontImage: $frontImage, backImage: $backImage, sideImage: $sideImage, rentalStartDate: $rentalStartDate, rentalEndDate: $rentalEndDate)';
   }
 
   @override
@@ -375,6 +392,7 @@ class _$CarImpl implements _Car {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CarImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.make, make) || other.make == make) &&
             (identical(other.model, model) || other.model == model) &&
             (identical(other.year, year) || other.year == year) &&
@@ -407,6 +425,7 @@ class _$CarImpl implements _Car {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       make,
       model,
       year,
@@ -443,7 +462,8 @@ class _$CarImpl implements _Car {
 
 abstract class _Car implements Car {
   const factory _Car(
-      {required final String make,
+      {final String? id,
+      required final String make,
       required final String model,
       required final int year,
       required final String color,
@@ -463,6 +483,8 @@ abstract class _Car implements Car {
 
   factory _Car.fromJson(Map<String, dynamic> json) = _$CarImpl.fromJson;
 
+  @override
+  String? get id; // Add the id field
   @override
   String get make;
   @override

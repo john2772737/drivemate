@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/cars/car_model.dart'; // Make sure you import the Car model
+import 'package:go_router/go_router.dart';
 
 class CarCard extends StatelessWidget {
   final Car car; // Update to take a single Car object
@@ -18,8 +19,8 @@ class CarCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
       child: GestureDetector(
         onTap: () {
-          // Add your tap functionality here (e.g., navigate to another screen)
-          
+          // Navigate to the 'propertypage' route and pass the car object
+          GoRouter.of(context).go('/propertypage', extra: car);
         },
         child: Container(
           height: screenHeight * 0.25,
