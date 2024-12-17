@@ -180,29 +180,25 @@ class HomePage extends StatelessWidget {
                           
                           // Popular Cars Container
                           Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 20.0, bottom: 10),
+                            padding: const EdgeInsets.only(top: 10, left: 0.0, bottom: 10),
                             child: Container(
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                  ),
-                                ],
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Popular Cars",
-                                    style: TextStyle(
-                                      fontFamily: "nasalization",
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Text(
+                                      "Popular Cars",
+                                      style: TextStyle(
+                                        fontFamily: "nasalization",
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   SizedBox(height: 10),

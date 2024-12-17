@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import './car_model.dart';
 
 class CarService {
-  final String baseUrl = 'http://192.168.1.53:3000/cars/';  // Your Node.js backend URL
+  final String baseUrl = 'http://192.168.1.57:3000/cars/';  // Your Node.js backend URL
 
   Future<List<Car>> fetchCars() async {
     try {
