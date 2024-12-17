@@ -12,26 +12,28 @@ class ExploreCar extends StatelessWidget {
     List<String> uniqueCarBrands = carBrands.toSet().toList();
 
     return Container(
-      padding: const EdgeInsets.only(top: 0, left: 20, bottom: 10),
+      padding: const EdgeInsets.only(top: 0, left: 15, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 16),
           SizedBox(
-            height: 50, // Adjusted to fit buttons better
+            height: 40, // Adjusted to fit buttons better
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: uniqueCarBrands.length,  // Use the unique list
               itemBuilder: (context, index) {
                 final brandName = uniqueCarBrands[index];  // Get the unique brand name
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 9),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
                       // Text color
-                      side: BorderSide(color: Colors.blueGrey, width: 1),
+                      side: BorderSide(color: Colors.black, width: 1),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(100),
                       ),
                     ),
                     onPressed: () {

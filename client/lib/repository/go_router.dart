@@ -6,12 +6,13 @@ import 'package:client/pages/WelcomePage.dart';
 import 'package:client/pages/NoInternet.dart';
 import 'package:client/pages/HomePage.dart';
 import 'package:client/pages/All_cars.dart';
+import 'package:client/pages/BillingPage.dart';
 import 'package:client/brand_pages/brand_cars_data.dart';
 import 'package:client/brand_pages/BrandCarsPage.dart';
 import 'auth.dart'; // Import your AuthService
 
 final GoRouter routercon = GoRouter(
-  initialLocation: "/welcomepage",
+  initialLocation: "/billing",
   routes: [
     GoRoute(
       path: '/',
@@ -39,6 +40,11 @@ final GoRouter routercon = GoRouter(
         final brandName = state.extra as String;
         return AllCarsPage();
       },
+    ),
+    GoRoute(
+      path: '/billing',
+      name: '/billing',
+      builder: (context, state) => BillingPage(),
     ),
     GoRoute(
       path: '/brandCars',

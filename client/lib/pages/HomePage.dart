@@ -108,15 +108,15 @@ class HomePage extends StatelessWidget {
                               onPressed: () {},
                               child: Text("Book Now"),
                               style: ButtonStyle(
-                                backgroundColor: WidgetStateProperty.all(Color(0xFF282931)),
-                                elevation: WidgetStateProperty.all(0),
-                                padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
-                                shape: WidgetStateProperty.all(
+                                backgroundColor: MaterialStateProperty.all(Color(0xFF282931)),
+                                elevation: MaterialStateProperty.all(0),
+                                padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
+                                shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                foregroundColor: WidgetStateProperty.all(Colors.white),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
                               ),
                             ),
                           ),
@@ -180,29 +180,25 @@ class HomePage extends StatelessWidget {
                           
                           // Popular Cars Container
                           Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 20.0, bottom: 10),
+                            padding: const EdgeInsets.only(top: 10, left: 0.0, bottom: 10),
                             child: Container(
                               padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                  ),
-                                ],
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Popular Cars",
-                                    style: TextStyle(
-                                      fontFamily: "nasalization",
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                    child: Text(
+                                      "Popular Cars",
+                                      style: TextStyle(
+                                        fontFamily: "nasalization",
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   SizedBox(height: 10),
