@@ -42,12 +42,14 @@ flutter:
     - assets/images/dodge_signin.png
     - assets/images/customized_arrow.png
     - assets/images/google_icon.png
+    - assets/images/googleblack.png
     - assets/images/image.png
     - assets/images/WELCOME_PAGE.png
     - assets/images/honda.png
     - assets/images/civic.png
     - assets/images/vios.png
     - assets/images/sorento.png
+    - assets/images/handle.png
 
   fonts:
     - family: goodtimes
