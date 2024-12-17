@@ -57,6 +57,22 @@ class CarService {
     throw Exception('Failed to load cars: $e');
   }
 }
+Future<Car> fetchCarById(String id) async {
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/getCarById/$id'));
+
+      if (response.statusCode == 200) {
+        // Parse the JSON response into a single Car object
+        Map<String, dynamic> data = json.decode(response.body);
+        return Car.fromJson(data);
+      } else {
+        // If the request fails, throw an exception
+        throw Exception('Failed to load car with ID $id');
+      }
+    } catch (e) {
+      throw Exception('Failed to load car: $e');
+    }
+  }
 
 
   

@@ -221,6 +221,14 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               <input
+                type="number"
+                name="year"
+                value={carData.year}
+                onChange={handleChange}
+                placeholder="Year"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+              <input
                 type="text"
                 name="color"
                 value={carData.color}
@@ -273,62 +281,53 @@ const FilterContainer = ({ onFilterClick, onAddClick }) => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               >
                 <option value="Economy">Economy</option>
-                <option value="Luxury">Luxury</option>
                 <option value="SUV">SUV</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Electric">Electric</option>
                 <option value="Convertible">Convertible</option>
-                <option value="Sport">Sport</option>
+                <option value="Pickup Truck">Pickup Truck</option>
               </select>
-              {/* File inputs for image uploads */}
-              <label htmlFor="front" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
-                Choose Front Image
-                {renderFileIcon(imageFiles.front)} {/* Check mark */}
+              <div>
+                <label className="block mb-2">Front Image</label>
                 <input
                   type="file"
-                  id="front"
                   name="front"
                   onChange={handleImageChange}
                   accept="image/*"
-                  className="hidden"
+                  className="w-full p-2 border border-gray-300 rounded-md"
                 />
-              </label>
-              <label htmlFor="back" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
-                Choose Back Image
-                {renderFileIcon(imageFiles.back)} {/* Check mark */}
+                {renderFileIcon(imageFiles.front)}
+              </div>
+              <div>
+                <label className="block mb-2">Back Image</label>
                 <input
                   type="file"
-                  id="back"
                   name="back"
                   onChange={handleImageChange}
                   accept="image/*"
-                  className="hidden"
+                  className="w-full p-2 border border-gray-300 rounded-md"
                 />
-              </label>
-              <label htmlFor="side" className="w-full p-2 border border-gray-300 rounded-md cursor-pointer bg-gray-100 text-center">
-                Choose Side Image
-                {renderFileIcon(imageFiles.side)} {/* Check mark */}
+                {renderFileIcon(imageFiles.back)}
+              </div>
+              <div>
+                <label className="block mb-2">Side Image</label>
                 <input
                   type="file"
-                  id="side"
                   name="side"
                   onChange={handleImageChange}
                   accept="image/*"
-                  className="hidden"
+                  className="w-full p-2 border border-gray-300 rounded-md"
                 />
-              </label>
+                {renderFileIcon(imageFiles.side)}
+              </div>
             </div>
-            <div className="mt-4 flex justify-end space-x-4">
+            <div className="flex justify-end mt-4">
               <button
-                onClick={closeModal}
-                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleAddCar} // This will now handle image upload and form submission
-                className={`px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                onClick={handleAddCar}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
                 disabled={isLoading} // Disable the button while loading
               >
-                {isLoading ? 'Adding...' : 'Add Car'}
+                {isLoading ? 'Adding...' : 'Add Car'} {/* Display loading state */}
               </button>
             </div>
           </div>

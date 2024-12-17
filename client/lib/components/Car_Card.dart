@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/cars/car_model.dart'; // Make sure you import the Car model
+import 'package:go_router/go_router.dart';
 
 class CarCard extends StatelessWidget {
   final Car car; // Update to take a single Car object
@@ -16,30 +17,39 @@ class CarCard extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-      child: Container(
-        height: screenHeight * 0.25,
-        margin: const EdgeInsets.symmetric(vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: Colors.blueGrey, width: 1),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      car.make, // Use car.make (from Car model)
-                      style: const TextStyle(
-                        fontFamily: "nasalization",
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+
+
+      child: GestureDetector(
+        onTap: () {
+          // Navigate to the 'propertypage' route and pass the car object
+          GoRouter.of(context).go('/propertypage', extra: car);
+        },
+        child: Container(
+          height: screenHeight * 0.25,
+          margin: const EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(color: Colors.blueGrey, width: 1),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        car.make, // Use car.make (from Car model)
+                        style: const TextStyle(
+                          fontFamily: "nasalization",
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+
                       ),
                     ),
                   ),

@@ -84,6 +84,23 @@ const getCarsByBrand = async (req, res) => {
   } catch (error) {
       res.status(500).json({ message: error.message });
   }
+
+
+  
+};
+const getCarById = async (req, res) => {
+  try {
+    const { id } = req.params;  // Get the car ID from the URL parameters
+    const car = await Cars.findById(id);  // Find the car by its ID
+
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });  // If no car is found
+    }
+
+    res.status(200).json(car);  // Return the found car
+  } catch (error) {
+    res.status(500).json({ message: error.message });  // If there's any error, respond with a message
+  }
 };
 
 
@@ -94,5 +111,6 @@ module.exports = {
   updateCar,
   getSingleCar,
   getDistinctCarBrands,
-  getCarsByBrand
+  getCarsByBrand,
+  getCarById
 };
