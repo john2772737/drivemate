@@ -23,6 +23,7 @@ mixin _$CarState {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$CarState {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$CarState {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$CarState {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$CarState {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$CarState {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) {
     return initial();
   }
@@ -152,6 +159,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) {
     return initial?.call();
   }
@@ -164,6 +172,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -180,6 +189,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) {
     return initial(this);
   }
@@ -192,6 +202,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) {
     return initial?.call(this);
   }
@@ -204,6 +215,7 @@ class _$CarInitialStateImpl implements CarInitialState {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -263,6 +275,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) {
     return loading();
   }
@@ -275,6 +288,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) {
     return loading?.call();
   }
@@ -287,6 +301,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -303,6 +318,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) {
     return loading(this);
   }
@@ -315,6 +331,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +344,7 @@ class _$CarLoadingStateImpl implements CarLoadingState {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -420,6 +438,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) {
     return loaded(cars);
   }
@@ -432,6 +451,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) {
     return loaded?.call(cars);
   }
@@ -444,6 +464,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -460,6 +481,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) {
     return loaded(this);
   }
@@ -472,6 +494,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) {
     return loaded?.call(this);
   }
@@ -484,6 +507,7 @@ class _$CarLoadedStateImpl implements CarLoadedState {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -579,6 +603,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) {
     return error(errorMessage);
   }
@@ -591,6 +616,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) {
     return error?.call(errorMessage);
   }
@@ -603,6 +629,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -619,6 +646,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) {
     return error(this);
   }
@@ -631,6 +659,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) {
     return error?.call(this);
   }
@@ -643,6 +672,7 @@ class _$CarErrorStateImpl implements CarErrorState {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -743,6 +773,7 @@ class _$makeLoaderImpl implements makeLoader {
     required TResult Function(List<Car> cars) loaded,
     required TResult Function(String errorMessage) error,
     required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
   }) {
     return makeLoader(make);
   }
@@ -755,6 +786,7 @@ class _$makeLoaderImpl implements makeLoader {
     TResult? Function(List<Car> cars)? loaded,
     TResult? Function(String errorMessage)? error,
     TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
   }) {
     return makeLoader?.call(make);
   }
@@ -767,6 +799,7 @@ class _$makeLoaderImpl implements makeLoader {
     TResult Function(List<Car> cars)? loaded,
     TResult Function(String errorMessage)? error,
     TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
     required TResult orElse(),
   }) {
     if (makeLoader != null) {
@@ -783,6 +816,7 @@ class _$makeLoaderImpl implements makeLoader {
     required TResult Function(CarLoadedState value) loaded,
     required TResult Function(CarErrorState value) error,
     required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
   }) {
     return makeLoader(this);
   }
@@ -795,6 +829,7 @@ class _$makeLoaderImpl implements makeLoader {
     TResult? Function(CarLoadedState value)? loaded,
     TResult? Function(CarErrorState value)? error,
     TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
   }) {
     return makeLoader?.call(this);
   }
@@ -807,6 +842,7 @@ class _$makeLoaderImpl implements makeLoader {
     TResult Function(CarLoadedState value)? loaded,
     TResult Function(CarErrorState value)? error,
     TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
     required TResult orElse(),
   }) {
     if (makeLoader != null) {
@@ -825,5 +861,181 @@ abstract class makeLoader implements CarState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$makeLoaderImplCopyWith<_$makeLoaderImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$idLoaderImplCopyWith<$Res> {
+  factory _$$idLoaderImplCopyWith(
+          _$idLoaderImpl value, $Res Function(_$idLoaderImpl) then) =
+      __$$idLoaderImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Car car});
+
+  $CarCopyWith<$Res> get car;
+}
+
+/// @nodoc
+class __$$idLoaderImplCopyWithImpl<$Res>
+    extends _$CarStateCopyWithImpl<$Res, _$idLoaderImpl>
+    implements _$$idLoaderImplCopyWith<$Res> {
+  __$$idLoaderImplCopyWithImpl(
+      _$idLoaderImpl _value, $Res Function(_$idLoaderImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CarState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? car = null,
+  }) {
+    return _then(_$idLoaderImpl(
+      null == car
+          ? _value.car
+          : car // ignore: cast_nullable_to_non_nullable
+              as Car,
+    ));
+  }
+
+  /// Create a copy of CarState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CarCopyWith<$Res> get car {
+    return $CarCopyWith<$Res>(_value.car, (value) {
+      return _then(_value.copyWith(car: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$idLoaderImpl implements idLoader {
+  const _$idLoaderImpl(this.car);
+
+  @override
+  final Car car;
+
+  @override
+  String toString() {
+    return 'CarState.idLoader(car: $car)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$idLoaderImpl &&
+            (identical(other.car, car) || other.car == car));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, car);
+
+  /// Create a copy of CarState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$idLoaderImplCopyWith<_$idLoaderImpl> get copyWith =>
+      __$$idLoaderImplCopyWithImpl<_$idLoaderImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Car> cars) loaded,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<dynamic> make) makeLoader,
+    required TResult Function(Car car) idLoader,
+  }) {
+    return idLoader(car);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Car> cars)? loaded,
+    TResult? Function(String errorMessage)? error,
+    TResult? Function(List<dynamic> make)? makeLoader,
+    TResult? Function(Car car)? idLoader,
+  }) {
+    return idLoader?.call(car);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Car> cars)? loaded,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<dynamic> make)? makeLoader,
+    TResult Function(Car car)? idLoader,
+    required TResult orElse(),
+  }) {
+    if (idLoader != null) {
+      return idLoader(car);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CarInitialState value) initial,
+    required TResult Function(CarLoadingState value) loading,
+    required TResult Function(CarLoadedState value) loaded,
+    required TResult Function(CarErrorState value) error,
+    required TResult Function(makeLoader value) makeLoader,
+    required TResult Function(idLoader value) idLoader,
+  }) {
+    return idLoader(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CarInitialState value)? initial,
+    TResult? Function(CarLoadingState value)? loading,
+    TResult? Function(CarLoadedState value)? loaded,
+    TResult? Function(CarErrorState value)? error,
+    TResult? Function(makeLoader value)? makeLoader,
+    TResult? Function(idLoader value)? idLoader,
+  }) {
+    return idLoader?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CarInitialState value)? initial,
+    TResult Function(CarLoadingState value)? loading,
+    TResult Function(CarLoadedState value)? loaded,
+    TResult Function(CarErrorState value)? error,
+    TResult Function(makeLoader value)? makeLoader,
+    TResult Function(idLoader value)? idLoader,
+    required TResult orElse(),
+  }) {
+    if (idLoader != null) {
+      return idLoader(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class idLoader implements CarState {
+  const factory idLoader(final Car car) = _$idLoaderImpl;
+
+  Car get car;
+
+  /// Create a copy of CarState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$idLoaderImplCopyWith<_$idLoaderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

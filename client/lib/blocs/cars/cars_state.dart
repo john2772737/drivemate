@@ -10,5 +10,6 @@ class CarState with _$CarState {
   const factory CarState.loaded(List<Car> cars) = CarLoadedState;
   const factory CarState.error(String errorMessage) = CarErrorState;
   const factory CarState.makeLoader(List<dynamic> make) = makeLoader;
+  const factory CarState.idLoader(Car car) = idLoader;
   
 }

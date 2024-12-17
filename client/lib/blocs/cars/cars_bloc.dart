@@ -14,6 +14,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         fetchCars: (_) async => _handleFetchCars(emit),
         getDistinctMake: (_) async => _handleGetDistinctMake(emit),
         getCarsbyBrand: (event) async => _handleGetCarsbyBrand(emit, event.brand),
+         getCarsbyId: (event) async => _handleGetCarsbyId(emit,event.id),
       );
     });
   }
@@ -49,6 +50,17 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       final cars = await carService
           .fetchCarsbyBrand(brand); // Pass the brand to fetch cars
       emit(CarState.loaded(cars)); // Emit state with cars by brand
+    } catch (e) {
+      emit(CarState.error(e.toString())); // Emit error state
+    }
+  }
+   Future<void> _handleGetCarsbyId(
+      Emitter<CarState> emit, String id) async {
+    emit(const CarState.loading()); // Emit loading state
+    try {
+      final cars = await carService
+          .fetchCarById(id); // Pass the brand to fetch cars
+      emit(CarState.idLoader(cars)); // Emit state with cars by brand
     } catch (e) {
       emit(CarState.error(e.toString())); // Emit error state
     }
