@@ -13,7 +13,7 @@ import 'package:client/brand_pages/BrandCarsPage.dart';
 import 'auth.dart'; // Import your AuthService
 import '../blocs/cars/car_model.dart';
 final GoRouter routercon = GoRouter(
-  initialLocation: "/billing",
+  initialLocation: "/welcomepage",
   routes: [
     GoRoute(
       path: '/',
@@ -45,7 +45,10 @@ final GoRouter routercon = GoRouter(
     GoRoute(
       path: '/billing',
       name: '/billing',
-      builder: (context, state) => BillingPage(),
+      builder: (context, state) {
+      final car = state.extra as Car; // Get the car object from the extra property
+        return BillingPage(car: car);
+      },
     ),
     GoRoute(
       path: '/brandCars',

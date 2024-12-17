@@ -7,12 +7,14 @@ const {
   getAllUsers,
   deleteUser,
   updateUserCar,
-  checkUser
+  checkUser,
+  rentCarToUser,
+  checkIfUserHasRentedCar
 } = require('../controller/users.controller');
 
 // Create a new user
 router.post('/createUser', createUser);
-
+router.get('/checkIfUserHasRentedCar/:uid', checkIfUserHasRentedCar);
 // Get all users
 router.get('/getAllUsers', getAllUsers);
 router.get('/checkUser/:email', checkUser);

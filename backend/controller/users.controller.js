@@ -92,11 +92,61 @@ const updateUserCar = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const rentCarToUser = async (userUid, carId) => {
+  try {
+    // Check if the car exists
+    const car = await Cars.findById(carId);
+    if (!car) {
+      return console.log('Car not found!');
+    }
+
+    // Find the user by UID and update their rentedCar field
+    const updatedUser = await Users.findOneAndUpdate(
+      { uid: userUid }, // Find the user by UID
+      { rentedCar: carId }, // Set rentedCar to the Car ID
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedUser) {
+      console.log('User not found!');
+    } else {
+      console.log('Car rented successfully:', updatedUser);
+    }
+  } catch (error) {
+    console.error('Error updating rented car:', error.message);
+  }
+};const checkIfUserHasRentedCar = async (req, res) => {
+  try {
+    const { uid } = req.params; // Get the UID from the request parameters
+
+    // Find the user by their UID and check if the rentedCar field is populated
+    const user = await Users.findOne({ uid });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' }); // If user is not found
+    }
+
+    // Check if the user already has a rented car
+    if (user.rentedCar) {
+      return res.status(400).json({ message: 'User already has a rented car.' }); // If user has rented a car
+    }
+
+    // If user does not have a rented car
+    res.status(200).json({ message: 'User does not have a rented car.' });
+  } catch (error) {
+    res.status(500).json({ message: error.message }); // Return the error message if any
+  }
+};
+
+
+
 
 module.exports = {
   createUser,
   getAllUsers,
   deleteUser,
   updateUserCar,
-  checkUser
+  checkUser,
+  rentCarToUser,
+  checkIfUserHasRentedCar
 };
