@@ -20,7 +20,7 @@ class CarCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           // Navigate to the 'propertypage' route and pass the car object
-          GoRouter.of(context).go('/propertypage', extra: car);
+          GoRouter.of(context).push('/propertypage', extra: car);
         },
         child: Container(
           height: screenHeight * 0.25,
