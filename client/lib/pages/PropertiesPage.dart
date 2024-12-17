@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:go_router/go_router.dart';
 import '../blocs/cars/car_model.dart';
+import 'package:client/components/CustomAppBar.dart';
 
 class CarProperty extends StatelessWidget {
-  final Car car;  // Now the page will take a Car object
+  final Car car; // Now the page will take a Car object
 
   const CarProperty({
     super.key,
-    required this.car,  // Expecting the Car object directly
+    required this.car, // Expecting the Car object directly
   });
 
   @override
@@ -22,9 +24,19 @@ class CarProperty extends StatelessWidget {
       car.sideImage,
     ];
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.white, // Set the background color to white
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Back button icon
+          onPressed: () {
+          GoRouter.of(context).pop();// Pop the current screen from the stack
+          },
+        ),
+        title: Text(car.make ?? 'Car'), // Display the car name as the title
+        backgroundColor: Colors.white,
+      ),
+      body: Column(
         children: [
           // Carousel Slider for images
           CarouselSlider(
@@ -48,81 +60,158 @@ class CarProperty extends StatelessWidget {
               );
             }).toList(),
           ),
-          Container(
-            width: screenWidth * 1,
-            height: screenHeight * 0.09,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 10.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20, left: 6, bottom: 5),
-                  child: Text(
-                    car.price.toString() ?? 'No Price Set',
-                    style: TextStyle(
-                      fontFamily: "nasalization",
-                      color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Container(
+              width: screenWidth * 1,
+              height: screenHeight * 0.07,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              margin: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 0, left: 15),
+                    child: Text(
+                      car.make ?? 'No Car Name',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: "nasalization",
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(top: 0, right: 15),
+                    child: Text(
+                      car.price.toString() ?? 'No Price Set',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: "nasalization",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 20),  // Space between properties
-          Container(
-            height: screenHeight * 0.3,
-            width: screenWidth * 1,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.all(Radius.circular(15)),
+          SizedBox(height: 10), // Space between widgets
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Container(
+              height: screenHeight * 0.31,
+              width: screenWidth * 1,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, left: 20),
+                    child: Text(
+                      "Properties",
+                      style: TextStyle(
+                        fontFamily: "nasalization",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Make: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.make ?? 'No brand name', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Model: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.model ?? 'No model included', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Category: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.category ?? 'No category included', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Year: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.year?.toString() ?? 'No year included', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Fuel: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.fuel ?? 'No fuel included', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                    child: Row(
+                      children: [
+                        Text("Seats: ", style: TextStyle(fontWeight: FontWeight.bold, fontFamily: "Nasalization")),
+                        Text(car.seats?.toString() ?? 'No seats included', style: TextStyle(fontFamily: "Nasalization")),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10, left: 10),
-                  child: Text(
-                    "Properties",
-                    style: TextStyle(
-                      fontFamily: "nasalization",
-                      fontWeight: FontWeight.bold, 
-                      fontSize: 20),
+          ),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: SizedBox(
+                  width: screenWidth * 0.7,
+                  height: screenHeight * 0.06,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      print("Rent this Car button pressed");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      "Rent this Car",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontFamily: "Nasalization",
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.make ?? 'No brand name'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.model ?? 'No model included'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.category ?? 'No category included'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.year?.toString() ?? 'No year included'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.fuel ?? 'No fuel included'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text(car.seats?.toString() ?? 'No seats included'),
-                ),
-                // Displaying the car ID
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-                  child: Text('Car ID: ${car.id}', style: TextStyle(fontSize: 14)),
-                ),
-              ],
+              ),
             ),
           ),
         ],
