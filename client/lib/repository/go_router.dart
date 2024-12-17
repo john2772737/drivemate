@@ -38,8 +38,8 @@ final GoRouter routercon = GoRouter(
     GoRoute(
       path: '/allcars',
       builder: (context, state) {
-        final brandName = state.extra as String;
-        return AllCarsPage(brandName: brandName);
+        
+        return AllCarsPage();
       },
     ),
     GoRoute(

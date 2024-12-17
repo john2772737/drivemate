@@ -20,37 +20,43 @@ mixin _$CarEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchCars,
     required TResult Function() getDistinctMake,
+    required TResult Function(String brand) getCarsbyBrand,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchCars,
     TResult? Function()? getDistinctMake,
+    TResult? Function(String brand)? getCarsbyBrand,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchCars,
     TResult Function()? getDistinctMake,
+    TResult Function(String brand)? getCarsbyBrand,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchCarsEvent value) fetchCars,
-    required TResult Function(getDistinctMake value) getDistinctMake,
+    required TResult Function(getDistinctMakeEvent value) getDistinctMake,
+    required TResult Function(GetCarsbyBrandEvent value) getCarsbyBrand,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchCarsEvent value)? fetchCars,
-    TResult? Function(getDistinctMake value)? getDistinctMake,
+    TResult? Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult? Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchCarsEvent value)? fetchCars,
-    TResult Function(getDistinctMake value)? getDistinctMake,
+    TResult Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchCars,
     required TResult Function() getDistinctMake,
+    required TResult Function(String brand) getCarsbyBrand,
   }) {
     return fetchCars();
   }
@@ -128,6 +135,7 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchCars,
     TResult? Function()? getDistinctMake,
+    TResult? Function(String brand)? getCarsbyBrand,
   }) {
     return fetchCars?.call();
   }
@@ -137,6 +145,7 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchCars,
     TResult Function()? getDistinctMake,
+    TResult Function(String brand)? getCarsbyBrand,
     required TResult orElse(),
   }) {
     if (fetchCars != null) {
@@ -149,7 +158,8 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchCarsEvent value) fetchCars,
-    required TResult Function(getDistinctMake value) getDistinctMake,
+    required TResult Function(getDistinctMakeEvent value) getDistinctMake,
+    required TResult Function(GetCarsbyBrandEvent value) getCarsbyBrand,
   }) {
     return fetchCars(this);
   }
@@ -158,7 +168,8 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchCarsEvent value)? fetchCars,
-    TResult? Function(getDistinctMake value)? getDistinctMake,
+    TResult? Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult? Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
   }) {
     return fetchCars?.call(this);
   }
@@ -167,7 +178,8 @@ class _$FetchCarsEventImpl implements FetchCarsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchCarsEvent value)? fetchCars,
-    TResult Function(getDistinctMake value)? getDistinctMake,
+    TResult Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
     required TResult orElse(),
   }) {
     if (fetchCars != null) {
@@ -182,18 +194,18 @@ abstract class FetchCarsEvent implements CarEvent {
 }
 
 /// @nodoc
-abstract class _$$getDistinctMakeImplCopyWith<$Res> {
-  factory _$$getDistinctMakeImplCopyWith(_$getDistinctMakeImpl value,
-          $Res Function(_$getDistinctMakeImpl) then) =
-      __$$getDistinctMakeImplCopyWithImpl<$Res>;
+abstract class _$$getDistinctMakeEventImplCopyWith<$Res> {
+  factory _$$getDistinctMakeEventImplCopyWith(_$getDistinctMakeEventImpl value,
+          $Res Function(_$getDistinctMakeEventImpl) then) =
+      __$$getDistinctMakeEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$getDistinctMakeImplCopyWithImpl<$Res>
-    extends _$CarEventCopyWithImpl<$Res, _$getDistinctMakeImpl>
-    implements _$$getDistinctMakeImplCopyWith<$Res> {
-  __$$getDistinctMakeImplCopyWithImpl(
-      _$getDistinctMakeImpl _value, $Res Function(_$getDistinctMakeImpl) _then)
+class __$$getDistinctMakeEventImplCopyWithImpl<$Res>
+    extends _$CarEventCopyWithImpl<$Res, _$getDistinctMakeEventImpl>
+    implements _$$getDistinctMakeEventImplCopyWith<$Res> {
+  __$$getDistinctMakeEventImplCopyWithImpl(_$getDistinctMakeEventImpl _value,
+      $Res Function(_$getDistinctMakeEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CarEvent
@@ -202,8 +214,8 @@ class __$$getDistinctMakeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$getDistinctMakeImpl implements getDistinctMake {
-  const _$getDistinctMakeImpl();
+class _$getDistinctMakeEventImpl implements getDistinctMakeEvent {
+  const _$getDistinctMakeEventImpl();
 
   @override
   String toString() {
@@ -213,7 +225,8 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$getDistinctMakeImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$getDistinctMakeEventImpl);
   }
 
   @override
@@ -224,6 +237,7 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   TResult when<TResult extends Object?>({
     required TResult Function() fetchCars,
     required TResult Function() getDistinctMake,
+    required TResult Function(String brand) getCarsbyBrand,
   }) {
     return getDistinctMake();
   }
@@ -233,6 +247,7 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchCars,
     TResult? Function()? getDistinctMake,
+    TResult? Function(String brand)? getCarsbyBrand,
   }) {
     return getDistinctMake?.call();
   }
@@ -242,6 +257,7 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchCars,
     TResult Function()? getDistinctMake,
+    TResult Function(String brand)? getCarsbyBrand,
     required TResult orElse(),
   }) {
     if (getDistinctMake != null) {
@@ -254,7 +270,8 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchCarsEvent value) fetchCars,
-    required TResult Function(getDistinctMake value) getDistinctMake,
+    required TResult Function(getDistinctMakeEvent value) getDistinctMake,
+    required TResult Function(GetCarsbyBrandEvent value) getCarsbyBrand,
   }) {
     return getDistinctMake(this);
   }
@@ -263,7 +280,8 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchCarsEvent value)? fetchCars,
-    TResult? Function(getDistinctMake value)? getDistinctMake,
+    TResult? Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult? Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
   }) {
     return getDistinctMake?.call(this);
   }
@@ -272,7 +290,8 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchCarsEvent value)? fetchCars,
-    TResult Function(getDistinctMake value)? getDistinctMake,
+    TResult Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
     required TResult orElse(),
   }) {
     if (getDistinctMake != null) {
@@ -282,6 +301,154 @@ class _$getDistinctMakeImpl implements getDistinctMake {
   }
 }
 
-abstract class getDistinctMake implements CarEvent {
-  const factory getDistinctMake() = _$getDistinctMakeImpl;
+abstract class getDistinctMakeEvent implements CarEvent {
+  const factory getDistinctMakeEvent() = _$getDistinctMakeEventImpl;
+}
+
+/// @nodoc
+abstract class _$$GetCarsbyBrandEventImplCopyWith<$Res> {
+  factory _$$GetCarsbyBrandEventImplCopyWith(_$GetCarsbyBrandEventImpl value,
+          $Res Function(_$GetCarsbyBrandEventImpl) then) =
+      __$$GetCarsbyBrandEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String brand});
+}
+
+/// @nodoc
+class __$$GetCarsbyBrandEventImplCopyWithImpl<$Res>
+    extends _$CarEventCopyWithImpl<$Res, _$GetCarsbyBrandEventImpl>
+    implements _$$GetCarsbyBrandEventImplCopyWith<$Res> {
+  __$$GetCarsbyBrandEventImplCopyWithImpl(_$GetCarsbyBrandEventImpl _value,
+      $Res Function(_$GetCarsbyBrandEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CarEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? brand = null,
+  }) {
+    return _then(_$GetCarsbyBrandEventImpl(
+      null == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetCarsbyBrandEventImpl implements GetCarsbyBrandEvent {
+  const _$GetCarsbyBrandEventImpl(this.brand);
+
+  @override
+  final String brand;
+
+  @override
+  String toString() {
+    return 'CarEvent.getCarsbyBrand(brand: $brand)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCarsbyBrandEventImpl &&
+            (identical(other.brand, brand) || other.brand == brand));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, brand);
+
+  /// Create a copy of CarEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCarsbyBrandEventImplCopyWith<_$GetCarsbyBrandEventImpl> get copyWith =>
+      __$$GetCarsbyBrandEventImplCopyWithImpl<_$GetCarsbyBrandEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchCars,
+    required TResult Function() getDistinctMake,
+    required TResult Function(String brand) getCarsbyBrand,
+  }) {
+    return getCarsbyBrand(brand);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchCars,
+    TResult? Function()? getDistinctMake,
+    TResult? Function(String brand)? getCarsbyBrand,
+  }) {
+    return getCarsbyBrand?.call(brand);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchCars,
+    TResult Function()? getDistinctMake,
+    TResult Function(String brand)? getCarsbyBrand,
+    required TResult orElse(),
+  }) {
+    if (getCarsbyBrand != null) {
+      return getCarsbyBrand(brand);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchCarsEvent value) fetchCars,
+    required TResult Function(getDistinctMakeEvent value) getDistinctMake,
+    required TResult Function(GetCarsbyBrandEvent value) getCarsbyBrand,
+  }) {
+    return getCarsbyBrand(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchCarsEvent value)? fetchCars,
+    TResult? Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult? Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
+  }) {
+    return getCarsbyBrand?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchCarsEvent value)? fetchCars,
+    TResult Function(getDistinctMakeEvent value)? getDistinctMake,
+    TResult Function(GetCarsbyBrandEvent value)? getCarsbyBrand,
+    required TResult orElse(),
+  }) {
+    if (getCarsbyBrand != null) {
+      return getCarsbyBrand(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCarsbyBrandEvent implements CarEvent {
+  const factory GetCarsbyBrandEvent(final String brand) =
+      _$GetCarsbyBrandEventImpl;
+
+  String get brand;
+
+  /// Create a copy of CarEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetCarsbyBrandEventImplCopyWith<_$GetCarsbyBrandEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

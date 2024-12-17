@@ -5,5 +5,6 @@ part 'cars_event.freezed.dart';
 @freezed
 class CarEvent with _$CarEvent {
   const factory CarEvent.fetchCars() = FetchCarsEvent;
-  const factory CarEvent.getDistinctMake() = getDistinctMake;
+  const factory CarEvent.getDistinctMake() = getDistinctMakeEvent;
+   const factory CarEvent.getCarsbyBrand(String brand) = GetCarsbyBrandEvent;
 }
