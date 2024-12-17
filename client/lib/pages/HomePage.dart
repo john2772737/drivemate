@@ -108,15 +108,15 @@ class HomePage extends StatelessWidget {
                               onPressed: () {},
                               child: Text("Book Now"),
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Color(0xFF282931)),
-                                elevation: MaterialStateProperty.all(0),
-                                padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
-                                shape: MaterialStateProperty.all(
+                                backgroundColor: WidgetStateProperty.all(Color(0xFF282931)),
+                                elevation: WidgetStateProperty.all(0),
+                                padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 30, vertical: 8)),
+                                shape: WidgetStateProperty.all(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
-                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                foregroundColor: WidgetStateProperty.all(Colors.white),
                               ),
                             ),
                           ),
