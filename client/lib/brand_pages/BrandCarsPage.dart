@@ -18,8 +18,19 @@ class BrandCarsPage extends StatelessWidget {
       create: (context) => CarBloc(carService: CarService())..add(CarEvent.getCarsbyBrand(brandName)), // Dispatch the event on page load
       child: Scaffold(
         appBar: AppBar(
-          title: Text("$brandName Cars"),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 90.0),
+          child: Text(
+            "$brandName",
+            style: TextStyle(
+              fontFamily: 'Nasalization',  // Replace with your font family
+              fontSize: 23,  // Optional: Set font size
+              fontWeight: FontWeight.bold,  // Optional: Set font weight
+            ),
+          ),
         ),
+      ),
+
         body: BlocBuilder<CarBloc, CarState>(
           builder: (context, state) {
             if (state is CarLoadingState) {
