@@ -137,6 +137,10 @@ class HomePage extends StatelessWidget {
                       return Center(child: Text('Error: ${state.errorMessage}'));
                     } else if (state is CarLoadedState) {
                       List<Car> carsToDisplay = state.cars.take(5).toList(); // Limit the number of cars to 5
+
+                      // Extract the car brands (assuming `carBrands` is a List<dynamic>)
+                      List<String> carBrands = state.cars.map((car) => car.make).toList();
+
                       return Column(
                         children: [
                           Padding(
@@ -156,7 +160,7 @@ class HomePage extends StatelessWidget {
                                   padding: const EdgeInsets.only(right: 15.0),
                                   child: TextButton(
                                     onPressed: () {
-                                      context.go('/allcars', extra: 'TOYOTA');
+                                       GoRouter.of(context).push('/allcars');
                                     },
                                     child: Text(
                                       "View All",
@@ -171,6 +175,8 @@ class HomePage extends StatelessWidget {
                               ],
                             ),
                           ),
+                          // Pass carBrands as a parameter to ExploreCar
+                          ExploreCar(carBrands: carBrands),  // Added ExploreCar widget here
                           
                           // Popular Cars Container
                           Padding(
