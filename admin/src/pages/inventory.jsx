@@ -69,7 +69,7 @@ const Inventory = () => {
     {
       content: (
         <img
-          className="w-48 h-48 object-cover" // Adjust the size and make it square
+          className="w-337 h-341 object-cover" // Adjust the size and make it square
           src={car.frontImage || "default-car-image.jpg"} // Default image if car doesn't have one
           alt="Car"
         />
@@ -78,7 +78,7 @@ const Inventory = () => {
     {
       content: (
         <img
-          className="w-48 h-48 object-cover" // Adjust the size and make it square
+          className="w-341 h-337 object-cover" // Adjust the size and make it square
           src={car.sideImage || "default-car-image.jpg"} // Default image if car doesn't have one
           alt="Car"
         />
@@ -87,7 +87,7 @@ const Inventory = () => {
     {
       content: (
         <img
-          className="w-48 h-48 object-cover" // Adjust the size and make it square
+          className="w-337 h-341 object-cover" // Adjust the size and make it square
           src={car.backImage || "default-car-image.jpg"} // Default image if car doesn't have one
           alt="Car"
         />
@@ -99,7 +99,7 @@ const Inventory = () => {
     car.year,
     car.color,
     car.fuel,
-    `$${car.price.toLocaleString()}`, // Format price
+    `₱${car.price.toLocaleString()}`, // Format price
     car.seats,
     car.category,
     car.availabilityStatus

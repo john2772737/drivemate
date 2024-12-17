@@ -44,7 +44,7 @@ const CarsSchema = new mongoose.Schema(
     fuel: {
       type: String,
       required: true,
-      enum: ['Gasoline', 'Diesel', 'Electric', 'Hybrid'],
+      enum: ['Gasoline', 'Diesel', 'Electric', 'Hybrid',],
     },
     fuelConsumption: {
       type: Number,
@@ -61,7 +61,7 @@ const CarsSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['Economy', 'Luxury', 'SUV', 'Convertible', 'Sport'],
+      enum: ['Economy', 'Luxury', 'SUV', 'Convertible', 'Sport','Pickup Truck','Electric'],
       description: "The category of the car"
     },
     frontImage: { // Changed name from image to frontImageView
