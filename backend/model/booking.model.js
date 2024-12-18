@@ -29,6 +29,11 @@ const BookingSchema = new mongoose.Schema(
       type: Boolean,
       default: false, // Default to false if not provided
     },
+    car: {
+      type: mongoose.Schema.Types.ObjectId, // Reference to Car model
+      ref: 'Car', // The name of the Car model
+      required: true, // A car must be associated with the booking
+    },
   },
   { timestamps: true } // Automatically add createdAt and updatedAt
 );
