@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const CarRoute = require('./route/cars.route')
 const UserRoute= require('./route/users.route')
+const BookingRoute = require('./route/booking.route')
 const cors = require('cors');
 const app = express();
 const port = 3000;
@@ -10,7 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 app.use("/cars", CarRoute);
-app.use("/user",UserRoute)
+app.use("/user",UserRoute);
+app.use("/booking",BookingRoute);
 
 
 

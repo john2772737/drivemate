@@ -192,7 +192,7 @@ class CarProperty extends StatelessWidget {
                   height: screenHeight * 0.06,
                   child: ElevatedButton(
                     onPressed: () {
-                      print("Rent this Car button pressed");
+                       GoRouter.of(context).go('/billing', extra: car);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
