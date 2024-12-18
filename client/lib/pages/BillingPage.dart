@@ -8,7 +8,6 @@ import 'dart:io'; // Add this import to use the File class
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
-
 class BillingPage extends StatefulWidget {
   final AuthService authService = AuthService(); // Initialize AuthService
   final String? email; // Email field (optional)
@@ -31,7 +30,8 @@ class _BillingPageState extends State<BillingPage> {
     "email": "", // Email field
     "phone": "",
     "rentalDate": null, // Changed from returnDate to rentalDate
-    "idImage": null, // Added for storing ID image URL
+    "idImage": null, 
+    "car": "", // Initially set an empty string
   };
 
   final ImagePicker _picker = ImagePicker();
@@ -45,6 +45,7 @@ class _BillingPageState extends State<BillingPage> {
     // Pre-populate the email and uid fields with the Firebase user's info
     _formData['email'] = widget.email;
     _formData['uid'] = widget.uid; // Set UID from authService
+    _formData['car'] = widget.car.id; // Assign car ID to _formData
   }
 
   // Helper method for showing date picker
@@ -373,3 +374,4 @@ class _BillingPageState extends State<BillingPage> {
     );
   }
 }
+

@@ -36,7 +36,27 @@ const deleteBooking = async (req, res) => {
   }
 };
 
+const getUnconfirmedBookings = async (req, res) => {
+  try {
+    // Find all bookings with isConfirmed set to false
+    const unconfirmedBookings = await Booking.find({ isConfirmed: false });
+
+    // Check if there are no unconfirmed bookings
+    if (unconfirmedBookings.length === 0) {
+      return res.status(404).json({ message: "No unconfirmed bookings found" });
+    }
+
+    // Send a success response with the unconfirmed bookings
+    res.status(200).json(unconfirmedBookings);
+  } catch (error) {
+    // Handle any errors during the retrieval process
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 module.exports = {
   createBooking,
   deleteBooking,
+  getUnconfirmedBookings
 };
